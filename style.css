@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 450px;
+  width: 100%;
+  margin: 60px auto;
+}
+
+.button {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #9e78cf;
+  border: 1px solid #9e78cf;
+}
+
+#container {
+  margin-top: 59px;
+}
