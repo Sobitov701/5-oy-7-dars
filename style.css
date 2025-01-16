@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+#text {
+  border: 1px solid #3e1671;
+  padding: 11px 15px;
+  width: 381px;
+  border-radius: 10px;
+  background-color: #0d0714;
+  color: #9e78cf;
+}
+
 .container {
   max-width: 450px;
   width: 100%;
