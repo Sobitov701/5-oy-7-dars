@@ -62,5 +62,3 @@ function deleteCard(index) {
 
   renderCards();
 }
-
-document.addEventListener("DOMContentLoaded", renderCards);
