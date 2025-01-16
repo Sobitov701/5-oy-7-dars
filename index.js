@@ -22,7 +22,7 @@ function creatCard(value) {
 }
 
 function renderCards() {
-  const savedCards = JSON.parse(localStorage.getItem("cards"));
+  const savedCards = JSON.parse(localStorage.getItem("cards")) || [];
   container.innerHTML = "";
   savedCards.forEach((card) => {
     let cardElement = creatCard(card);
@@ -30,30 +30,25 @@ function renderCards() {
   });
 
   const deleteBtns = document.querySelectorAll(".delete-btn");
-
-  deleteBtns.length > 0 &&
-    deleteBtns.forEach((btn, index) => {
-      btn &&
-        btn.addEventListener("click", () => {
-          deleteCard(index);
-        });
+  deleteBtns.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      deleteCard(index);
     });
+  });
 }
 
-btn &&
-  btn.addEventListener("click", function (event) {
-    event.preventDefault();
+btn.addEventListener("click", function (event) {
+  event.preventDefault();
+  const inputValue = text.value.trim();
+  if (inputValue) {
+    const savedCards = JSON.parse(localStorage.getItem("cards")) || [];
+    savedCards.push(inputValue);
+    localStorage.setItem("cards", JSON.stringify(savedCards));
 
-    const inputValue = text.value.trim();
-    if (inputValue) {
-      const savedCards = JSON.parse(localStorage.getItem("cards"));
-      savedCards.push(inputValue);
-      localStorage.setItem("cards", JSON.stringify(savedCards));
-
-      renderCards();
-      text.value = "";
-    }
-  });
+    renderCards();
+    text.value = "";
+  }
+});
 
 function deleteCard(index) {
   const savedCards = JSON.parse(localStorage.getItem("cards")) || [];
@@ -62,3 +57,5 @@ function deleteCard(index) {
 
   renderCards();
 }
+
+window.addEventListener("DOMContentLoaded", renderCards);
